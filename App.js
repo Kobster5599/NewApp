@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import { Video, AVPlaybackStatus } from 'expo-av';
+import { View, StyleSheet, Button, Pressable } from 'react-native';
+import { Video } from 'expo-av';
+
 
 export default function App() {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
+      <Pressable onPress={() =>
+            status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()}>
       <Video
         ref={video}
         style={styles.video}
@@ -18,14 +21,7 @@ export default function App() {
         isLooping
         onPlaybackStatusUpdate={status => setStatus(() => status)}
       />
-      <View style={styles.buttons}>
-        <Button
-          title={status.isPlaying ? 'Pause' : 'Play'}
-          onPress={() =>
-            status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-          }
-        />
-      </View>
+      </Pressable>
     </View>
   );
 }
@@ -37,4 +33,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  video: {
+    width: '100%',
+    aspectRatio: 16/9,
+  }
 });
