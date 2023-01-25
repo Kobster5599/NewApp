@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Button, Pressable } from 'react-native';
-import { Video } from 'expo-av';
-import { AntDesign } from '@expo/vector-icons';
+import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import VideoPlayer from './components/VideoPlayer';
 
 
@@ -12,11 +10,19 @@ export default function App() {
 
 
   return (
-    <View style={styles.container} >
-      <VideoPlayer />
-      <VideoPlayer />
-      <VideoPlayer />
+    <SafeAreaView>
+    <ScrollView style={styles.scrollView} >
+      <View style={styles.container}>
+      <VideoPlayer video={'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+      <VideoPlayer video={'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+      <VideoPlayer video={'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+      <VideoPlayer video={'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+      <VideoPlayer video={'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+      <VideoPlayer video={'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
+      <VideoPlayer video={'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}/>
     </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -28,6 +34,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  scrollView: {
+    width: '100%'
+  },
   video: {
     width: '90%',
     aspectRatio: 16/9,
